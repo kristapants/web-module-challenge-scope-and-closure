@@ -64,7 +64,7 @@ function inning(){
   return Math.floor(Math.random() * 3);
 }
 
-console.log(inning());
+inning();
 
 /* Task 3: finalScore()
 
@@ -81,11 +81,19 @@ finalScore(inning, 9) might return:
 */ 
 
 function finalScore(inning, inningSoFar){
-
-
+  let homeTeam = 0;
+  let awayTeam = 0;
+  for (let i = 0; i < inningSoFar; i++) {
+    homeTeam += inning();
+    awayTeam += inning();
+  }
+  return { 
+    Home: homeTeam,
+    Away: awayTeam,
+  };
 }
 
-console.log(finalScore(inning, 4))
+finalScore(inning, 4);
 
 /* Task 4: 
 
@@ -109,6 +117,53 @@ Final Score: awayTeam - homeTeam */
 
 
 function scoreboard(getInningScore, inning, allInnings) {
-  /* CODE HERE */
+  let round = {};
+  let homeTeam = 0;
+  let awayTeam = 0;
+  for (let i = 0; i < allInnings; i++) {
+    // get round scores
+    round = getInningScore(inning);
+
+    // apply round scores
+    homeTeam += round.Home;
+    awayTeam += round.Away;
+
+    // print inning results
+    let inningLabel = '';
+    if(i === 0){
+      inningLabel = '1st';
+    } else if (i === 1) {
+      inningLabel = '2nd';
+    } else if (i === 2) {
+      inningLabel = '3rd';
+    } else {
+      inningLabel = `${i + 1}th`;
+    }
+    console.log(`${inningLabel} inning: ${homeTeam} - ${awayTeam}`);
+  }
+
+  // print final results
+  console.log(`Final Score: ${homeTeam} - ${awayTeam}`);
+  if (homeTeam > awayTeam) {
+    console.log('HOME TEAM WINS!! Drive home safely');
+  } else if (homeTeam < awayTeam) {
+    console.log('Monty Moles wins. Please don\'t riot');
+  } else {
+    console.log('No one is happy with a tie. Go break stuff');
+  }
+
 }
 
+scoreboard(getInningScore, inning, 9);
+
+//////////////////////////////////
+
+
+function getInningScore(inning){
+  return { 
+    Home: inning(),
+    Away: inning(),
+  };
+
+
+}
