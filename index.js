@@ -29,7 +29,7 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * In counter2, count is a global variable. The count variable for counter1 can't be accesed outside of the counterMaker function.
+ * In counter2, count is a global variable. The count variable for counter1 can't be accessed outside of the counterMaker function.
  * 2. Which of the two uses a closure? How can you tell?
  * counter1 uses a closure. 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
@@ -47,6 +47,8 @@ function counterMaker() {
 }
 
 const counter1 = counterMaker();
+
+counter1()
 
 // counter2 code
 let count = 0;
@@ -167,3 +169,38 @@ function getInningScore(inning){
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var addSix = createBase(6);
+// addSix(10); // returns 16
+// addSix(21); // returns 27
+
+// function createBase(x) {
+
+
+// }
+
+// function createBase(baseNumber) {
+//   return function(additive) {
+//       return baseNumber + additive;
+//   }
+// }
+
+// var addSix = createBase(6);
+// addSix(10); // returns 16
+// addSix(21); // returns 27
+// var addEightteen = createBase(addSix(12));
+// console.log(addEightteen(2));
